@@ -149,6 +149,7 @@
 .drag-wrapper {
   overflow-x: scroll;
   padding: 8px 0;
+  flex-wrap: unset;
 }
 
 .drag-area {
