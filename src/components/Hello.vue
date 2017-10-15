@@ -21,6 +21,8 @@
             :list="list.data"
             class="drag-area"
             :options="{
+              forceFallback: true,
+              fallbackTolerance: 0,
               group:{
                 name:'people',
                 put: index !== 0
@@ -167,5 +169,12 @@
 .drag-area span {
   display: block;
   height: 100%;
+}
+
+.sortable-drag {
+  -webkit-transition: -webkit-transform .1s ease-out !important;
+  -moz-transition: -moz-transform .1s ease-out !important;
+  -o-transition: -o-transform .1s ease-out !important;
+  transition: transform .1s ease-out !important;
 }
 </style>
