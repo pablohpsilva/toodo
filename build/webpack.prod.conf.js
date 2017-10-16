@@ -27,7 +27,24 @@ module.exports = merge(baseWebpackConfig, {
       sourceMap: config.build.productionSourceMap,
       minimize: true,
       compress: {
-        warnings: false
+        warnings: true, // warn about potentially dangerous optimizations/code
+        sequences: true,  // join consecutive statemets with the “comma operator”
+        properties: true,  // optimize property access: a["foo"] → a.foo
+        dead_code: true,  // discard unreachable code
+        drop_debugger: true,  // discard “debugger” statements
+        unsafe: false, // some unsafe optimizations (see below)
+        conditionals: true,  // optimize if-s and conditional expressions
+        comparisons: true,  // optimize comparisons
+        evaluate: true,  // evaluate constant expressions
+        booleans: true,  // optimize boolean expressions
+        loops: true,  // optimize loops
+        unused: true,  // drop unused variables/functions
+        hoist_funs: true,  // hoist function declarations
+        hoist_vars: true, // hoist variable declarations
+        if_return: true,  // optimize if-s followed by return/continue
+        join_vars: true,  // join var declarations
+        cascade: true,  // try to cascade `right` into `left` in sequences
+        side_effects: true,  // drop side-effect-free statements
       }
     }),
     // Compress extracted CSS. We are using this plugin so that possible
@@ -46,9 +63,23 @@ module.exports = merge(baseWebpackConfig, {
       template: 'src/index.html',
       inject: true,
       minify: {
+        tml5: true,
+        useShortDoctype: true,
+        decodeEntities: true,
+        removeTagWhitespace: true,
+        removeStyleLinkTypeAttributes: true,
+        removeScriptTypeAttributes: true,
+        minifyCSS: true,
+        minifyJS: true,
         removeComments: true,
         collapseWhitespace: true,
-        removeAttributeQuotes: true
+        collapseBooleanAttributes: true,
+        removeAttributeQuotes: false,
+        removeRedundantAttributes: true,
+        removeEmptyAttributes: true,
+        preserveLineBreaks: false,
+        sortAttributes: true,
+        sortClassName: true,
         // more options:
         // https://github.com/kangax/html-minifier#options-quick-reference
       },
@@ -79,40 +110,22 @@ module.exports = merge(baseWebpackConfig, {
       chunks: ['vendor']
     }),
     new webpack.optimize.CommonsChunkPlugin({
-      async: true,
-      children: true,
-      minCHunks: 4
+      // filename: 'used-twice.js',
+      // async: 'used-twice',
+      async: 'used-twice',
+      children: false,
+      minChunks: function (module, count) {
+        return count >= 2;
+      },
     }),
     // Generate a service worker script that will precache, and keep up to date,
     // the HTML & assets that are part of the Webpack build.
     new SWPrecacheWebpackPlugin({
-      // By default, a cache-busting query parameter is appended to requests
-      // used to populate the caches, to ensure the responses are fresh.
-      // If a URL is already hashed by Webpack, then there is no concern
-      // about it being stale, and the cache-busting can be skipped.
-      dontCacheBustUrlsMatching: /\.\w{8}\./,
+      cacheId: 'my-vue-app',
       filename: 'service-worker.js',
-      logger(message) {
-        if (message.indexOf('Total precache size is') === 0) {
-          // This message occurs for every build and is a bit too noisy.
-          return;
-        }
-        if (message.indexOf('Skipping static resource') === 0) {
-          // This message obscures real errors so we ignore it.
-          // https://github.com/facebookincubator/create-react-app/issues/2612
-          return;
-        }
-        console.log(message);
-      },
+      staticFileGlobs: ['dist/**/*.{js,html,css,json,png,svg}'],
       minify: true,
-      // For unknown URLs, fallback to the index page
-      // navigateFallback: publicUrl + '/index.html',
-      navigateFallback: '../src/index.html',
-      // Ignores URLs starting from /__ (useful for Firebase):
-      // https://github.com/facebookincubator/create-react-app/issues/2237#issuecomment-302693219
-      navigateFallbackWhitelist: [/^(?!\/__).*/],
-      // Don't precache sourcemaps (they're large) and build asset manifest:
-      staticFileGlobsIgnorePatterns: [/\.map$/, /asset-manifest\.json$/],
+      stripPrefix: 'dist/'
     }),
     new PreloadWebpackPlugin({
       rel: 'preload',
