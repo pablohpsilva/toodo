@@ -8,8 +8,9 @@ var
   ExtractTextPlugin = require('extract-text-webpack-plugin'),
   HtmlWebpackPlugin = require('html-webpack-plugin'),
   SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin'),
-  PreloadWebpackPlugin = require('preload-webpack-plugin')
-  OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
+  PreloadWebpackPlugin = require('preload-webpack-plugin'),
+  OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin'),
+  BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
 // const publicUrl = publicPath.slice(0, -1);
 
@@ -51,7 +52,8 @@ module.exports = merge(baseWebpackConfig, {
     // duplicated CSS from different components can be deduped.
     new OptimizeCSSPlugin({
       cssProcessorOptions: {
-        safe: true
+        safe: true,
+        discardComments: { removeAll: true }
       }
     }),
     // extract css into its own file
@@ -110,9 +112,19 @@ module.exports = merge(baseWebpackConfig, {
       name: 'manifest',
       chunks: ['vendor']
     }),
+    // new webpack.optimize.CommonsChunkPlugin({
+    //   name: 'quasar',
+    //   async: true,
+    //   minChunks(module, count) {
+    //     var context = module.context;
+    //     var targets = ['quasar-framework', 'quasar-extras']
+    //     return context &&
+    //       context.indexOf('node_modules') >= 0 &&
+    //       targets.find(t => new RegExp('\\\\' + t + '\\\\', 'i').test(context));
+    //   },
+    // }),
     new webpack.optimize.CommonsChunkPlugin({
-      // filename: 'used-twice.js',
-      // async: 'used-twice',
+      name: 'used-twice',
       async: true,
       children: false,
       minChunks: function (module, count) {
@@ -131,6 +143,9 @@ module.exports = merge(baseWebpackConfig, {
     new PreloadWebpackPlugin({
       rel: 'preload',
       include: ['manifest', 'vendor']
-    })
+    }),
+    new BundleAnalyzerPlugin({
+      analyzerMode: 'static'
+    }),
   ]
 })
