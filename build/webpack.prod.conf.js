@@ -123,7 +123,7 @@ module.exports = merge(baseWebpackConfig, {
     new SWPrecacheWebpackPlugin({
       cacheId: 'my-vue-app1',
       filename: 'service-worker.js',
-      staticFileGlobs: ['dist/**/*.{js,html,css,json,png,svg}'],
+      staticFileGlobs: ['dist/**/*.{js,html,css,json,png,svg,woff}'],
       minify: true,
       stripPrefix: 'dist/'
     }),
