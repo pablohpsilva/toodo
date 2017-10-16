@@ -134,7 +134,7 @@ module.exports = merge(baseWebpackConfig, {
     // Generate a service worker script that will precache, and keep up to date,
     // the HTML & assets that are part of the Webpack build.
     new SWPrecacheWebpackPlugin({
-      cacheId: 'my-vue-app1',
+      cacheId: 'toodo-app-v1',
       filename: 'service-worker.js',
       staticFileGlobs: ['dist/**/*.{js,html,css,json,png,svg,woff}'],
       minify: true,
