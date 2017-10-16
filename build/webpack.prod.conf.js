@@ -89,6 +89,7 @@ module.exports = merge(baseWebpackConfig, {
     // split vendor js into its own file
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
+      async: true,
       minChunks: function (module, count) {
         // any required modules inside node_modules are extracted to vendor
         return (
@@ -112,7 +113,7 @@ module.exports = merge(baseWebpackConfig, {
     new webpack.optimize.CommonsChunkPlugin({
       // filename: 'used-twice.js',
       // async: 'used-twice',
-      async: 'used-twice',
+      async: true,
       children: false,
       minChunks: function (module, count) {
         return count >= 2;
