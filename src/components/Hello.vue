@@ -11,7 +11,7 @@
       </q-toolbar-title>
     </q-toolbar>
 
-    <div class="flex row full-width drag-wrapper">
+    <div class="flex row full-width drag-wrapper no-wrap">
       <template
         v-for="(list, index) in lists">
         <div class="flex column list-wrapper">
