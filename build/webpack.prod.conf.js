@@ -237,7 +237,7 @@ module.exports = merge(baseWebpackConfig, {
     new SWPrecacheWebpackPlugin({
       cacheId: 'toodo-app-v1',
       filename: 'service-worker.js',
-      staticFileGlobs: ['dist/**/*.{js,html,css,json,png,svg,woff}'],
+      staticFileGlobs: ['dist/**/*.{js,json,html,css,json,png,svg,woff}'],
       minify: true,
       stripPrefix: 'dist/'
     }),
