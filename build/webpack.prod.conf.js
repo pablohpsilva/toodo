@@ -97,13 +97,34 @@ module.exports = merge(baseWebpackConfig, {
           module.resource &&
           /\.js$/.test(module.resource) &&
           (
-            module.resource.indexOf('quasar') > -1 ||
+            module.resource.indexOf('quasar') === -1 ||
             module.resource.indexOf(
               path.join(__dirname, '../node_modules')
             ) === 0
           )
         )
       }
+    }),
+    // Build my quasar.js bundle from node_modules with quasar code ONLY
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'quasar',
+      minChunks(module, count) {
+        return (
+          module.resource &&
+          /\.js$/.test(module.resource) &&
+          module.resource.indexOf('quasar') > -1
+        )
+      },
+    }),
+    // Find anything that is might be duplicated code and create a used-twice.js file with the code
+    // powerfull stuff right here.
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'used-twice',
+      async: false,
+      children: false,
+      minChunks: function (module, count) {
+        return count >= 2;
+      },
     }),
     // extract webpack runtime and module manifest to its own file in order to
     // prevent vendor hash from being updated whenever app bundle is updated
