@@ -171,6 +171,24 @@ module.exports = merge(baseWebpackConfig, {
         removeScriptElement: true
       }
     }),
+    // split vendor js into its own file
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor',
+      async: true,
+      minChunks: function (module, count) {
+        // any required modules inside node_modules are extracted to vendor
+        return (
+          module.resource &&
+          /\.js$/.test(module.resource) &&
+          (
+            module.resource.indexOf('quasar') > -1 ||
+            module.resource.indexOf(
+              path.join(__dirname, '../node_modules')
+            ) === 0
+          )
+        )
+      }
+    }),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
       async: true,
@@ -219,7 +237,7 @@ module.exports = merge(baseWebpackConfig, {
     new SWPrecacheWebpackPlugin({
       cacheId: 'toodo-app-v1',
       filename: 'service-worker.js',
-      staticFileGlobs: ['dist/**/*.{js,json,html,css,json,png,svg,woff}'],
+      staticFileGlobs: ['dist/**/*.{js,json,html,css,json,png,svg,woff,woff2}'],
       minify: true,
       stripPrefix: 'dist/'
     }),
