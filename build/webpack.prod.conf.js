@@ -10,6 +10,8 @@ var
   HtmlWebpackPlugin = require('html-webpack-plugin'),
   PreloadWebpackPlugin = require('preload-webpack-plugin'),
   OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin'),
+  SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin'),
+  loadMinified = require('./load-minified'),
   BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
 // const publicUrl = publicPath.slice(0, -1);
@@ -86,7 +88,9 @@ module.exports = merge(baseWebpackConfig, {
         // https://github.com/kangax/html-minifier#options-quick-reference
       },
       // necessary to consistently work with multiple chunks via CommonsChunkPlugin
-      chunksSortMode: 'dependency'
+      chunksSortMode: 'dependency',
+      serviceWorkerLoader: `<script>${loadMinified(path.join(__dirname,
+        './service-worker-prod.js'))}</script>`
     }),
     // split vendor js into its own file
     new webpack.optimize.CommonsChunkPlugin({
@@ -136,6 +140,13 @@ module.exports = merge(baseWebpackConfig, {
     new PreloadWebpackPlugin({
       rel: 'preload',
       include: ['manifest', 'vendor', 'quasar', 'used-twice']
+    }),
+    new SWPrecacheWebpackPlugin({
+      cacheId: 'toodo-app-v1',
+      filename: 'service-worker.js',
+      staticFileGlobs: ['dist/**/*.{js,json,html,css,json,png,svg,woff}'],
+      minify: true,
+      stripPrefix: 'dist/'
     }),
     new BundleAnalyzerPlugin({
       analyzerMode: 'static'
