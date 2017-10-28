@@ -8,6 +8,7 @@ var
   baseWebpackConfig = require('./webpack.base.conf'),
   ExtractTextPlugin = require('extract-text-webpack-plugin'),
   HtmlWebpackPlugin = require('html-webpack-plugin'),
+  PreloadWebpackPlugin = require('preload-webpack-plugin'),
   OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin'),
   BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
@@ -131,6 +132,10 @@ module.exports = merge(baseWebpackConfig, {
     new webpack.optimize.CommonsChunkPlugin({
       name: 'manifest',
       chunks: ['vendor']
+    }),
+    new PreloadWebpackPlugin({
+      rel: 'preload',
+      include: ['manifest', 'vendor', 'quasar', 'used-twice']
     }),
     new BundleAnalyzerPlugin({
       analyzerMode: 'static'
