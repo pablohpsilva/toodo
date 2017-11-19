@@ -129,71 +129,66 @@
 </script>
 
 <style>
-/* body {
-  background: #E1F1F7;
-} */
+  .list-wrapper {
+    background: rgb(234, 234, 234);
+    margin: 0 4px;
+    padding: 8px;
+  }
 
-.list-wrapper {
-  background: rgb(234, 234, 234);
-  margin: 0 4px;
-  padding: 8px;
-}
+  .list-wrapper p {
+    padding: 0 1px;
+    color: rgb(72, 63, 63);
+    font-family: Roboto;
+    font-weight: 400;
+    display:inline-block;
+    width: 250px;
+    white-space: nowrap;
+    overflow:hidden !important;
+    text-overflow: ellipsis;
+  }
 
-.list-wrapper p {
-  padding: 0 1px;
-  color: rgb(72, 63, 63);
-  font-family: Roboto;
-  font-weight: 400;
-  display:inline-block;
-  width: 250px;
-  white-space: nowrap;
-  overflow:hidden !important;
-  text-overflow: ellipsis;
-}
+  .list-complete-item {
+    padding: 8px;
+    background: rgba(255, 255, 255, 1);
+    margin-top: 10px;
+    height: 80px;
+    box-shadow: 0 1px 5px rgba(0,0,0,.2), 0 0px 0px rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.12);
+    border-radius: 3px;
+    transition: all .36s;
+  }
 
-.list-complete-item {
-  padding: 8px;
-  background: rgba(255, 255, 255, 1);
-  margin-top: 10px;
-  height: 80px;
-  /* border: solid 1px rgba(0, 0, 0, .36); */
-  box-shadow: 0 1px 5px rgba(0,0,0,.2), 0 0px 0px rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.12);
-  border-radius: 3px;
-  transition: all .36s;
-}
+  .list-complete-enter,
+  .list-complete-leave-active {
+    opacity: 0;
+  }
 
-.list-complete-enter,
-.list-complete-leave-active {
-  opacity: 0;
-}
+  .drag-wrapper {
+    overflow-x: scroll;
+    padding: 8px 0;
+    flex-wrap: unset;
+  }
 
-.drag-wrapper {
-  overflow-x: scroll;
-  padding: 8px 0;
-  flex-wrap: unset;
-}
+  .drag-area {
+    height: calc(100vh - 50px);
+    max-height: calc(100vh - 125px);
+    width: 250px;
+    overflow-y: scroll;
+  }
 
-.drag-area {
-  height: calc(100vh - 50px);
-  max-height: calc(100vh - 125px);
-  width: 250px;
-  overflow-y: scroll;
-}
+  .drag-area
+  .list-complete-item:first-child {
+    margin: 0;
+  }
 
-.drag-area
-.list-complete-item:first-child {
-  margin: 0;
-}
+  .drag-area span {
+    display: block;
+    height: 100%;
+  }
 
-.drag-area span {
-  display: block;
-  height: 100%;
-}
-
-.sortable-drag {
-  -webkit-transition: -webkit-transform .1s ease-out !important;
-  -moz-transition: -moz-transform .1s ease-out !important;
-  -o-transition: -o-transform .1s ease-out !important;
-  transition: transform .1s ease-out !important;
-}
+  .sortable-drag {
+    -webkit-transition: -webkit-transform .1s ease-out !important;
+    -moz-transition: -moz-transform .1s ease-out !important;
+    -o-transition: -o-transform .1s ease-out !important;
+    transition: transform .1s ease-out !important;
+  }
 </style>
