@@ -50,31 +50,31 @@ app.4c805a02ed26becdba812fc011640591.css     127 kB
 |:----------------------------|:------------|
 |    Requests                 |      6      |
 | KB transferred              |    291KB    |
-| DOMContentLoaded (average)  |   ms   |
-| Load time (average)         |  ms   |
+| DOMContentLoaded (average)  |   264.4ms   |
+| Load time (average)         |   554.4ms   |
 
 
 ### Performance:
 
 |      What             |   Time    |
 |:----------------------|:----------|
-| Loading (average)     | ms   |
-| Scripting (average)   | ms      |
-| Rendering (average)   | ms    |
-| Painting (average)    | ms    |
-| Other (average)       | ms   |
+| Loading (average)     | 8.3ms     |
+| Scripting (average)   | 97.82ms   |
+| Rendering (average)   | 33.83ms   |
+| Painting (average)    | 6.56ms    |
+| Other (average)       | 95.38ms   |
 
 <!--
 var sum = (arr) => arr.reduce((acc, curr) => curr + acc, 0)
 
 // Measures:
-var measuresDOMContentLoadedMilliseconds = []
-var measuresLoadTimeMilliseconds         = []
-var measuresLoadingMilliseconds          = []
-var measuresScriptingMilliseconds        = []
-var measuresRenderingMilliseconds        = []
-var measuresPaintingMilliseconds         = []
-var measuresOtherMilliseconds            = []
+var measuresDOMContentLoadedMilliseconds = [563, 158, 181, 241, 179]
+var measuresLoadTimeMilliseconds         = [1100, 355, 359, 577, 381]
+var measuresLoadingMilliseconds          = [8.2, 7.9, 8, 8.2, 9.2]
+var measuresScriptingMilliseconds        = [107.3, 89, 102.1, 92.5, 98.2]
+var measuresRenderingMilliseconds        = [35, 28, 36.5, 36.1, 33.6]
+var measuresPaintingMilliseconds         = [7, 5.3, 7.1, 7.2, 6.2]
+var measuresOtherMilliseconds            = [97.7, 88.6, 100.1, 95, 95.5]
 
 
 var measures = [
@@ -91,6 +91,13 @@ console.log(measures.map(el => sum(el) / el.length))
 
 // console:
 [
+  264.4,
+  554.4,
+  8.3,
+  97.82,
+  33.83,
+  6.56,
+  95.38
 ]
 
 -->
