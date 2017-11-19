@@ -134,7 +134,7 @@ console.log(measures.map(el => sum(el) / el.length))
 
 ![Toodo web application - Network benchmark comparison: first and last](https://raw.githubusercontent.com/pablohpsilva/toodo/master/README/Screen%20Shot%202017-11-19%20at%205.28.22%20PM.png "Toodo web application - Network benchmark comparison: first and last")
 
-![Toodo web application - Network benchmark comparison: first and last](https://raw.githubusercontent.com/pablohpsilva/toodo/master/README/Screen%20Shot%202017-11-19%20at%205.28.43%20PM.png "Toodo web application - Network benchmark comparison: first and last")
+![Toodo web application - Network benchmark comparison: first and last](https://raw.githubusercontent.com/pablohpsilva/toodo/master/README/Screen%20Shot%202017-11-19%20at%205.34.22%20PM.png "Toodo web application - Network benchmark comparison: first and last")
 
 ### Network:
 
