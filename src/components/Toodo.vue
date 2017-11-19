@@ -2,20 +2,31 @@
   <q-layout
     ref="layout"
     view="lHh Lpr fff"
-    :left-class="{'bg-grey-2': true}">
+    :left-class="{
+      'bg-grey-2': true
+    }">
     <q-toolbar
       slot="header">
       <q-toolbar-title>
-        Quasar App
-        <div slot="subtitle">Running on Quasar v{{$q.version}}</div>
+        "Too" do
+        <div
+          slot="subtitle">
+          <!-- Running on Quasar v{{$q.version}} -->
+          a.k.a. trello
+        </div>
       </q-toolbar-title>
     </q-toolbar>
 
-    <div class="flex row full-width drag-wrapper no-wrap">
+    <div
+      class="flex row full-width drag-wrapper no-wrap">
       <template
         v-for="(list, index) in lists">
-        <div class="flex column list-wrapper">
-          <p>{{ list.title }}</p>
+        <div
+          :key="index"
+          class="flex column list-wrapper">
+          <p>
+            {{ list.title }}
+          </p>
           <draggable
             @add="added"
             :list="list.data"
@@ -23,11 +34,18 @@
             :options="{
               forceFallback: true,
               fallbackTolerance: 0,
+              group: {
+                name: 'todo'
+              }
+            }">
+            <!-- :options="{
+              forceFallback: true,
+              fallbackTolerance: 0,
               group:{
                 name:'people',
                 put: index !== 0
               }
-            }">
+            }"> -->
             <transition-group
               name="list-complete">
               <div
@@ -41,7 +59,6 @@
         </div>
       </template>
     </div>
-
   </q-layout>
 </template>
 
@@ -60,30 +77,36 @@
   import Draggable from 'vuedraggable'
 
   export default {
-    name: 'index',
+    name: 'Toodo',
     data () {
       return {
         lists: [
           {
             validation: true,
-            title: 'List 1',
+            title: 'Backlog',
             data: [
-              { name: '111111', valid: false },
-              { name: '2222222', valid: false },
-              { name: '33333333', valid: false }
+              { name: '1', valid: false },
+              { name: '22', valid: false },
+              { name: '333', valid: false }
             ]
           },
           {
             validation: true,
-            title: 'List 2',
+            title: 'Doing',
             data: [
-              { name: '444444444', valid: false }
+              { name: '4444', valid: false },
+              { name: '55555', valid: false },
+              { name: '666666', valid: false }
+            ]
+          },
+          {
+            validation: true,
+            title: 'Done',
+            data: [
             ]
           }
         ]
       }
-    },
-    computed: {
     },
     components: {
       Draggable,
@@ -101,10 +124,6 @@
       added (event) {
         console.log(event)
       }
-    },
-    mounted () {
-    },
-    beforeDestroy () {
     }
   }
 </script>
