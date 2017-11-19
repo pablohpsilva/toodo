@@ -45,31 +45,37 @@ app.4c805a02ed26becdba812fc011640591.css     127 kB
 ```
 
 ### Network:
-* Requests                  : 6;
-* KB transferred            : 291KB;
-* DOMContentLoaded (average): 541.3ms;
-* Load time        (average): 1241.7ms;
 
-<!--
-  var measuresDOMContentLoadedMilliseconds = [493, 608, 974, 304, 347, 680, 755, 532, 405, 315]
-  var measuresLoadTimeMilliseconds         = [1160, 1560, 977, 1010, 615, 2080, 2020, 1190, 1020, 785]
--->
+|    What           |   Measure   |
+|:------------------|:------------|
+|    Requests       |      6      |
+| KB transferred    |    291KB    |
+| DOMContentLoaded  |   541.3ms   |
+| Load time         |  1241.7ms   |
+
 
 ### Performance:
-* Loading  : 6.839ms;
-* Scripting: 91ms;
-* Rendering: 39.1ms;
-* Painting : 14.8ms;
-* Other    : 100.5ms;
 
-<!-- var measuresLoadingMilliseconds   = [6.7, 7, 7.5, 6.6, 6.4]  -->
-<!-- var measuresScriptingMilliseconds = [90.7, 87.4, 94.8, 91.8, 90.3]  -->
-<!-- var measuresRenderingMilliseconds = [37.6, 40.9, 37.2, 40.1, 39.7]  -->
-<!-- var measuresPaintingMilliseconds  = [25.7, 20.5, 7, 12.8, 8]  -->
-<!-- var measuresOtherMilliseconds     = [99.8, 111.2, 97.5, 95.4, 100.9]  -->
+|      What   |   Time    |
+|:------------|:----------|
+|  Loading    | 6.839ms   |
+| Scripting   | 91ms      |
+| Rendering   | 39.1ms    |
+| Painting    | 14.8ms    |
+|   Other     | 100.5ms   |
 
 <!--
 var sum = (arr) => arr.reduce((acc, curr) => curr + acc; return acc, 0)
+
+// Measures:
+var measuresDOMContentLoadedMilliseconds = [493, 608, 974, 304, 347, 680, 755, 532, 405, 315]
+var measuresLoadTimeMilliseconds         = [1160, 1560, 977, 1010, 615, 2080, 2020, 1190, 1020, 785]
+var measuresLoadingMilliseconds          = [6.7, 7, 7.5, 6.6, 6.4]
+var measuresScriptingMilliseconds = [90.7, 87.4, 94.8, 91.8, 90.3]
+var measuresRenderingMilliseconds        = [37.6, 40.9, 37.2, 40.1, 39.7]
+var measuresPaintingMilliseconds         = [25.7, 20.5, 7, 12.8, 8]
+var measuresOtherMilliseconds            = [99.8, 111.2, 97.5, 95.4, 100.9]
+
 
 var measures = [
   measuresDOMContentLoadedMilliseconds,
