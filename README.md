@@ -27,6 +27,16 @@ $ quasar lint
 * Internet speed (average): 6 Mbps;
 * Internet latency (average): 29.8ms;
 
+## Changes (newest first)
+
+* Converted woff fonts to woff2, reducing size of them in general;
+* updated the ServiceWorker to cache woff2 files;
+* Copied the contents of *.css and place it at the end of the html outputted file;
+* Deleted the *.css file and importing script in outputted html file;
+* Using the webpack ImageminPlugin reduced the size of SVG images;
+* Using the webpack ImageminPlugin reduced the size of JPG images by making quality 50% less than original;
+* Using the webpack ImageminPlugin reduced the size of PNG images by making quality 50% less than original;
+
 ## Measurements
 
 ### App build output
@@ -67,31 +77,31 @@ statics/img/icons/msapplication-icon-144x144.png    1.15 kB
 |:----------------------------|:------------|
 |    Requests                 |      6      |
 | KB transferred              |    291KB    |
-| DOMContentLoaded (average)  |   ms   |
-| Load time (average)         |   ms   |
+| DOMContentLoaded (average)  |   107.8ms   |
+| Load time (average)         |   156.6ms   |
 
 
 ### Performance:
 
 |      What             |   Time    |
 |:----------------------|:----------|
-| Loading (average)     | ms   |
-| Scripting (average)   | ms      |
-| Rendering (average)   | ms    |
-| Painting (average)    | ms    |
-| Other (average)       | ms   |
+| Loading (average)     | 12.62ms   |
+| Scripting (average)   | 109.94ms  |
+| Rendering (average)   | 37.86ms   |
+| Painting (average)    | 16.26ms   |
+| Other (average)       | 91.84ms   |
 
 <!--
 var sum = (arr) => arr.reduce((acc, curr) => curr + acc, 0)
 
 // Measures:
-var measuresDOMContentLoadedMilliseconds = []
-var measuresLoadTimeMilliseconds         = []
-var measuresLoadingMilliseconds          = []
-var measuresScriptingMilliseconds        = []
-var measuresRenderingMilliseconds        = []
-var measuresPaintingMilliseconds         = []
-var measuresOtherMilliseconds            = []
+var measuresDOMContentLoadedMilliseconds = [187, 109, 81, 74, 88]
+var measuresLoadTimeMilliseconds         = [257, 119, 145, 128, 134]
+var measuresLoadingMilliseconds          = [12.7, 12.2, 12.7, 11.8, 13.7]
+var measuresScriptingMilliseconds        = [107.2, 142.9, 105.8, 96.4, 97.4]
+var measuresRenderingMilliseconds        = [46.7, 51.6, 32.4, 33.7, 24.9]
+var measuresPaintingMilliseconds         = [28.1, 20.2, 10.1, 16.5, 6.4]
+var measuresOtherMilliseconds            = [78.9, 105.6, 94, 92.2, 88.5]
 
 
 var measures = [
@@ -108,6 +118,98 @@ console.log(measures.map(el => sum(el) / el.length))
 
 // console:
 [
+  107.8,
+  156.6,
+  12.62,
+  109.94,
+  37.86,
+  16.26,
+  91.84
 ]
 
 -->
+
+
+## All measurements
+
+### Network:
+
+|    What                     |   Measure   |
+|:----------------------------|:------------|
+|                   MEASURE #1              |
+| Requests                    |      6      |
+| KB transferred              |    291KB    |
+| DOMContentLoaded (average)  |    747ms    |
+| Load time (average)         |   1904ms    |
+|                                           |
+|                   MEASURE #2              |
+| Requests                    |      6      |
+| KB transferred              |    291KB    |
+| DOMContentLoaded (average)  |   541.3ms   |
+| Load time (average)         |  1241.7ms   |
+|                                           |
+|                   MEASURE #3              |
+| Requests                    |      8      |
+| KB transferred              |    291KB    |
+| DOMContentLoaded (average)  |   520.6ms   |
+| Load time (average)         |   904.6ms   |
+|                                           |
+|                   MEASURE #4              |
+| Requests                    |      6      |
+| KB transferred              |    291KB    |
+| DOMContentLoaded (average)  |   264.4ms   |
+| Load time (average)         |   554.4ms   |
+|                                           |
+|                   MEASURE #5              |
+| Requests                    |      8      |
+| KB transferred              |    291KB    |
+| DOMContentLoaded (average)  |   134.8ms   |
+| Load time (average)         |   267ms     |
+|                                           |
+|                   MEASURE #6              |
+| Requests                    |      8      |
+| KB transferred              |    597KB    |
+| DOMContentLoaded (average)  |   107.8ms   |
+| Load time (average)         |   156.6ms   |
+
+
+### Performance:
+
+|      What             |   Time    |
+|:----------------------|:----------|
+|            MEASURE #1             |
+| Loading (average)     | 8.940ms   |
+| Scripting (average)   | 83.22ms   |
+| Rendering (average)   | 44.78ms   |
+| Painting (average)    | 21.32ms   |
+| Other (average)       | 91.64ms   |
+|            MEASURE #2             |
+| Loading (average)     | 6.839ms   |
+| Scripting (average)   | 91ms      |
+| Rendering (average)   | 39.1ms    |
+| Painting (average)    | 14.8ms    |
+| Other (average)       | 100.5ms   |
+|            MEASURE #3             |
+| Loading (average)     | 8.54ms    |
+| Scripting (average)   | 97.94ms   |
+| Rendering (average)   | 33.67ms   |
+| Painting (average)    | 6.42ms    |
+| Other (average)       | 94.64ms   |
+|            MEASURE #4             |
+| Loading (average)     | 8.3ms     |
+| Scripting (average)   | 97.82ms   |
+| Rendering (average)   | 33.83ms   |
+| Painting (average)    | 6.56ms    |
+| Other (average)       | 95.38ms   |
+|            MEASURE #5             |
+| Loading (average)     | 9.95ms    |
+| Scripting (average)   | 106.8ms   |
+| Rendering (average)   | 29.22ms   |
+| Painting (average)    | 6.64ms    |
+| Other (average)       | 95.4ms    |
+|            MEASURE #6             |
+| Loading (average)     | 12.62ms   |
+| Scripting (average)   | 109.94ms  |
+| Rendering (average)   | 37.86ms   |
+| Painting (average)    | 16.26ms   |
+| Other (average)       | 91.84ms   |
