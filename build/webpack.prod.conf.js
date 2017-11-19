@@ -12,13 +12,10 @@ var
   PreloadWebpackPlugin = require('preload-webpack-plugin'),
   OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin'),
   CopyWebpackPlugin = require('copy-webpack-plugin'),
-  // PurifyCSSPlugin = require('purifycss-webpack'),
   loadMinified = require('./load-minified'),
   ImageminPlugin = require('imagemin-webpack-plugin').default,
   StyleExtHtmlWebpackPlugin = require('style-ext-html-webpack-plugin'),
   BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
-
-// const publicUrl = publicPath.slice(0, -1);
 
 module.exports = merge(baseWebpackConfig, {
   module: {
@@ -66,15 +63,6 @@ module.exports = merge(baseWebpackConfig, {
     new ExtractTextPlugin({
       filename: '[name].[contenthash].css'
     }),
-    // new PurifyCSSPlugin({
-    //   // Give paths to parse for rules. These should be absolute!
-    //   paths: glob.sync(path.join(__dirname, 'build/*.html')),
-    //   purifyOptions: {
-    //     minify: true,
-    //     info: true,
-    //     whitelist: ['*q*', 'bg-grey-2', 'flex' , 'row', 'full-width', 'drag-wrapper', 'column', 'list-wrapper', 'drag-area', 'list-complete-item']
-    //   }
-    // }),
     new HtmlWebpackPlugin({
       filename: path.resolve(__dirname, '../dist/index.html'),
       template: 'src/index.html',
