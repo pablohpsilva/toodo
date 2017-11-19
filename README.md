@@ -46,35 +46,35 @@ app.4c805a02ed26becdba812fc011640591.css     127 kB
 
 ### Network:
 
-|    What           |   Measure   |
-|:------------------|:------------|
-|    Requests       |      6      |
-| KB transferred    |    291KB    |
-| DOMContentLoaded  |   541.3ms   |
-| Load time         |  1241.7ms   |
+|    What                     |   Measure   |
+|:----------------------------|:------------|
+|    Requests                 |      6      |
+| KB transferred              |    291KB    |
+| DOMContentLoaded (average)  |    747ms    |
+| Load time (average)         |   1904ms    |
 
 
 ### Performance:
 
-|      What   |   Time    |
-|:------------|:----------|
-|  Loading    | 6.839ms   |
-| Scripting   | 91ms      |
-| Rendering   | 39.1ms    |
-| Painting    | 14.8ms    |
-|   Other     | 100.5ms   |
+|      What             |   Time    |
+|:----------------------|:----------|
+| Loading (average)     | 8.940ms   |
+| Scripting (average)   | 83.22ms   |
+| Rendering (average)   | 44.78ms   |
+| Painting (average)    | 21.32ms   |
+| Other (average)       | 91.64ms   |
 
 <!--
-var sum = (arr) => arr.reduce((acc, curr) => curr + acc; return acc, 0)
+var sum = (arr) => arr.reduce((acc, curr) => curr + acc, 0)
 
 // Measures:
-var measuresDOMContentLoadedMilliseconds = []
-var measuresLoadTimeMilliseconds         = []
-var measuresLoadingMilliseconds          = []
-var measuresScriptingMilliseconds        = []
-var measuresRenderingMilliseconds        = []
-var measuresPaintingMilliseconds         = []
-var measuresOtherMilliseconds            = []
+var measuresDOMContentLoadedMilliseconds = [702, 745, 800, 755, 733]
+var measuresLoadTimeMilliseconds         = [1480, 1700, 2200, 2150, 1990]
+var measuresLoadingMilliseconds          = [6.9, 8.7, 10.4, 9.5, 9.2]
+var measuresScriptingMilliseconds        = [90.6, 66.5, 90.2, 85.1, 83.7]
+var measuresRenderingMilliseconds        = [34.7, 34, 54.5, 52.3, 48.4]
+var measuresPaintingMilliseconds         = [7.1, 26.4, 27.2, 25.7, 20.2]
+var measuresOtherMilliseconds            = [105.4, 91.3, 96.6, 85.1, 79.8]
 
 
 var measures = [
@@ -91,13 +91,13 @@ console.log(measures.map(el => sum(el) / el.length))
 
 // console:
 [
-  541.3,
-  1241.7,
-  6.839999999999999,
-  91.00000000000001,
-  39.1,
-  14.8,
-  100.96
+  747,
+  1904,
+  8.940,
+  83.22,
+  44.78,
+  21.32,
+  91.64
 ]
 
 -->
