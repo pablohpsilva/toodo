@@ -85,18 +85,22 @@
             validation: true,
             title: 'Backlog',
             data: [
-              { name: '1', valid: false },
-              { name: '22', valid: false },
-              { name: '333', valid: false }
+              { name: 'Readaptar a navegação do aplicativo', valid: false },
+              { name: 'Fazer barra de sugestões de atrações', valid: false },
+              { name: 'Melhorar UI de roteiros', valid: false },
+              { name: 'Usar Prerender na aplicação', valid: false },
+              { name: 'Criar tela de resumo de roteiro', valid: false },
+              { name: 'Botão call2action no blog', valid: false }
             ]
           },
           {
             validation: true,
             title: 'Doing',
             data: [
-              { name: '4444', valid: false },
-              { name: '55555', valid: false },
-              { name: '666666', valid: false }
+              { name: 'Adicionar ServiceWorker ', valid: false },
+              { name: 'Redesenhar a Home', valid: false },
+              { name: 'Melhorar SEO', valid: false },
+              { name: 'Corrigir bug no login. Callback do Facebook', valid: false }
             ]
           },
           {
