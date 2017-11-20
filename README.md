@@ -27,6 +27,13 @@ $ quasar lint
 * Internet speed (average): 6 Mbps;
 * Internet latency (average): 29.8ms;
 
+## Changes (newest first)
+
+* Used CommonsChunkPlugin to place in a file every "used-twice" code and share it across the application;
+* Since my bundle app.js file is quite large, I've decided to extract the quasar code from it, creating two files: quasar.js and app.js (with no quasar code). I used CommonsChunkPlugin to do the trick;
+* [measure-1] Added new rules to UglifyJsPlugin in order to make app run faster on browser;
+* [measure-1] Added new rules to HtmlWebpackPlugin in order to clean up the HTML file and compressed it;
+
 ## Measurements
 
 ### App build output
