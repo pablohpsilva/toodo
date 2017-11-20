@@ -27,6 +27,11 @@ $ quasar lint
 * Internet speed (average): 6 Mbps;
 * Internet latency (average): 29.8ms;
 
+## Changes (newest first)
+
+* Added new rules to UglifyJsPlugin in order to make app run faster on browser;
+* Added new rules to HtmlWebpackPlugin in order to clean up the HTML file and compressed it;
+
 ## Measurements
 
 ### App build output
