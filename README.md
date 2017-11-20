@@ -27,6 +27,17 @@ $ quasar lint
 * Internet speed (average): 6 Mbps;
 * Internet latency (average): 29.8ms;
 
+## Changes (newest first)
+
+* Decided to make the app work offline. So I used SWPrecacheWebpackPlugin to cache the application code and assets;
+* I used the [vue-cli pwa template ServiceWorker configuration](https://github.com/vuejs-templates/pwa/blob/master/template/build/service-worker-prod.js) in order to have this up and running fast;
+* [[measure-4](https://github.com/pablohpsilva/toodo/tree/measure-4)] I've decided and prepared my application to work with HTTP2. After reading a bunch of things about it, I realised I could use the chrome parallelism in my favor (Google chrome can download up to 6 files in parallel);
+* [[measure-4](https://github.com/pablohpsilva/toodo/tree/measure-4)] Since HTTP2 is the goal, I'll take advantage on parallelism using PreloadWebpackPlugin to download the files: `app.js, manifest.js, vendor.js, used-twice.js` at the same time as the first thing chrome should download.
+* [[measure-3](https://github.com/pablohpsilva/toodo/tree/measure-3)] Used CommonsChunkPlugin to place in a file every "used-twice" code and share it across the application;
+* [[measure-3](https://github.com/pablohpsilva/toodo/tree/measure-3)] Since my bundle app.js file is quite large, I've decided to extract the quasar code from it, creating two files: quasar.js and app.js (with no quasar code). I used CommonsChunkPlugin to do the trick;
+* [[measure-2](https://github.com/pablohpsilva/toodo/tree/measure-2)] Added new rules to UglifyJsPlugin in order to make app run faster on browser;
+* [[measure-2](https://github.com/pablohpsilva/toodo/tree/measure-2)] Added new rules to HtmlWebpackPlugin in order to clean up the HTML file and compressed it;
+
 ## Measurements
 
 ### App build output
