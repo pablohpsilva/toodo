@@ -59,7 +59,7 @@ app.4c805a02ed26becdba812fc011640591.css     127 kB
 
 |    What                     |   Measure   |
 |:----------------------------|:------------|
-|    Requests                 |      6      |
+|    Requests                 |      8      |
 | KB transferred              |    291KB    |
 | DOMContentLoaded (average)  |   264.4ms   |
 | Load time (average)         |   554.4ms   |
